@@ -5,3 +5,4 @@ com\wxy\micro\model\SystemUserExample$Criterion.class
 com\wxy\micro\model\SystemUserExample$GeneratedCriteria.class
 com\wxy\micro\model\SystemUserExample.class
 com\wxy\micro\utils\StringUtils.class
+com\wxy\micro\entity\RetObject.class

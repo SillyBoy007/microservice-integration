@@ -12,7 +12,7 @@ spring:
   datasource:
       type: com.alibaba.druid.pool.DruidDataSource  #数据源类型
       driver-class-name: org.gjt.mm.mysql.Driver  #数据库驱动
-      url: jdbc:mysql://localhost:3306/mcroservice-integration01  #数据库url
+      url: jdbc:mysql://localhost:3306/microservice-integration01  #数据库url
       username: root
       password: 123456
       dbcp2:

@@ -14,7 +14,7 @@
 			<div class="m-login">
 				<h3>后台系统登录</h3>
 				<div class="m-login-warp">
-					<form class="layui-form"  method="post" th:action="@{/login}" >
+					<form class="layui-form" method="post" id="loginForm" >
 						<div class="layui-form-item">
 							<input type="text" name="username" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
 						</div>
@@ -33,7 +33,7 @@
 						</div>
 						<div class="layui-form-item m-login-btn">
 							<div class="layui-inline">
-								<button  class="layui-btn layui-btn-normal" lay-submit lay-filter="login">登录</button>
+								<button th:type="button"  class="layui-btn layui-btn-normal" lay-submit lay-filter="login">登录</button>
 							</div>
 							<div class="layui-inline">
 								<button type="reset" class="layui-btn layui-btn-primary">取消</button>
@@ -44,6 +44,7 @@
 				<p class="copyright">Copyright 2015-2016 by XIAODU</p>
 			</div>
 		</div>
+		<script th:src="@{/lib/ueditor/third-party/jquery-1.10.2.js}" type="text/javascript" charset="utf-8"></script>
 		<script th:src="@{/layui/layui.js}" type="text/javascript" charset="utf-8"></script>
 		<script>
 			layui.use(['form', 'layedit', 'laydate'], function() {
@@ -65,12 +66,16 @@
 
 				
 				//监听提交
-			/*	form.on('submit(login)', function(data) {
-                    var postData = JSON.stringify(data.field);
-					$.post('/api/login/validate.do',postData,function (res) {
-                        alert(res.msg);
+				form.on('submit(login)', function(data) {
+                    var postData = data.field;
+					$.post('/api/login.do',postData,function (res) {
+                        if (res.code===1001){
+                            $('#loginForm').submit();
+                        }else {
+                            alert("失败")
+                        }
                     });
-				});*/
+				});
 
 			});
 		</script>

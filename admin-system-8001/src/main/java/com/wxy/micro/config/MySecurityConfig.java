@@ -1,6 +1,7 @@
 package com.wxy.micro.config;
 
 import com.wxy.micro.handler.MyPasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,7 +22,10 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAnyRole("ADMIN","SYSTEMADMIN")
                 .antMatchers("/system/**").hasRole("SYSTEMADMIN");
 
-        http.formLogin().loginPage("/login").usernameParameter("username").passwordParameter("password");
+        http.formLogin()
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password");
         http.csrf().disable();
     }
     //密码加密方式

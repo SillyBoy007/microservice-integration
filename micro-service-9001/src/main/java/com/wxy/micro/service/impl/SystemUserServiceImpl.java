@@ -34,20 +34,21 @@ public class SystemUserServiceImpl implements SystemUserService {
         return systemUserMapper.selectByPrimaryKey(id);
     }
 
+
     @Override
-    public boolean loginCheck(String username, String password) {
+    public SystemUser getUserByUsernameAndPassword(String username, String password) {
         SystemUserExample systemUserExample = new SystemUserExample();
-        SystemUserExample.Criteria criteria = systemUserExample.createCriteria();
-        criteria.andUsernameEqualTo(username);
-        criteria.andPasswordEqualTo(password);
-        List<SystemUser> sysuser = systemUserMapper.selectByExample(systemUserExample);
-        if (StringUtils.isEmpty(sysuser)){
-            return false;
+        systemUserExample.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(password);
+        List<SystemUser> systemUsers = systemUserMapper.selectByExample(systemUserExample);
+        if (!StringUtils.isEmpty(systemUsers)){
+            if (systemUsers.size()>0){
+                return systemUsers.get(0);
+            }
+            return null;
         }
-        if (sysuser.size()>0){
-            return true;
+        else {
+            return null;
         }
-        return false;
     }
 
 

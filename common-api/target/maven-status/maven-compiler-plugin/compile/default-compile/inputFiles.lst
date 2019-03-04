@@ -1,4 +1,5 @@
-D:\develop\workspace\mcroservice-integration\common-api\src\main\java\com\wxy\micro\utils\StringUtils.java
-D:\develop\workspace\mcroservice-integration\common-api\src\main\java\com\wxy\micro\model\SystemUser.java
-D:\develop\workspace\mcroservice-integration\common-api\src\main\java\com\wxy\micro\service\SystemUserService.java
-D:\develop\workspace\mcroservice-integration\common-api\src\main\java\com\wxy\micro\model\SystemUserExample.java
+D:\workspack\microservice-integration\common-api\src\main\java\com\wxy\micro\model\SystemUserExample.java
+D:\workspack\microservice-integration\common-api\src\main\java\com\wxy\micro\service\SystemUserService.java
+D:\workspack\microservice-integration\common-api\src\main\java\com\wxy\micro\entity\RetObject.java
+D:\workspack\microservice-integration\common-api\src\main\java\com\wxy\micro\model\SystemUser.java
+D:\workspack\microservice-integration\common-api\src\main\java\com\wxy\micro\utils\StringUtils.java
