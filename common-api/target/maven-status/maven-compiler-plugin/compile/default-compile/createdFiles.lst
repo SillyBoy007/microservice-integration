@@ -1,0 +1,7 @@
+com\wxy\micro\model\SystemUser.class
+com\wxy\micro\service\SystemUserService.class
+com\wxy\micro\model\SystemUserExample$Criteria.class
+com\wxy\micro\model\SystemUserExample$Criterion.class
+com\wxy\micro\model\SystemUserExample$GeneratedCriteria.class
+com\wxy\micro\model\SystemUserExample.class
+com\wxy\micro\utils\StringUtils.class
