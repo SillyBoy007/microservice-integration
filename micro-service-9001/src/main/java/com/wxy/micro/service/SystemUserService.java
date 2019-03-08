@@ -1,7 +1,5 @@
 package com.wxy.micro.service;
 
-import com.wxy.micro.model.SystemUser;
-
 import java.util.List;
 
 public interface SystemUserService {

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wxy.micro.mapper.SystemUserMapper">
-  <resultMap id="BaseResultMap" type="com.wxy.micro.model.SystemUser">
+<mapper namespace="com.wxy.micro.mapper.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.wxy.micro.model.UserRole">
     <id column="id" jdbcType="CHAR" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="role_id" jdbcType="CHAR" property="roleId" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
     <result column="createtime" jdbcType="VARCHAR" property="createtime" />
-    <result column="datasource" jdbcType="VARCHAR" property="datasource" />
-    <result column="last_login_time" jdbcType="VARCHAR" property="lastLoginTime" />
-    <result column="login_count" jdbcType="INTEGER" property="loginCount" />
     <result column="field1" jdbcType="VARCHAR" property="field1" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, createtime, datasource, last_login_time, login_count, field1
+    id, role_id, user_id, createtime, field1
   </sql>
-  <select id="selectByExample" parameterType="com.wxy.micro.model.SystemUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.wxy.micro.model.UserRoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from sys_user
+    from user_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,50 +86,39 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from sys_user
+    from user_role
     where id = #{id,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from sys_user
+    delete from user_role
     where id = #{id,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wxy.micro.model.SystemUserExample">
-    delete from sys_user
+  <delete id="deleteByExample" parameterType="com.wxy.micro.model.UserRoleExample">
+    delete from user_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.wxy.micro.model.SystemUser">
-    insert into sys_user (id, username, password, 
-      createtime, datasource, last_login_time, 
-      login_count, field1)
-    values (#{id,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=VARCHAR}, #{datasource,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=VARCHAR}, 
-      #{loginCount,jdbcType=INTEGER}, #{field1,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.wxy.micro.model.UserRole">
+    insert into user_role (id, role_id, user_id, createtime, 
+      field1)
+    values (#{id,jdbcType=CHAR}, #{roleId,jdbcType=CHAR}, #{userId,jdbcType=CHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{field1,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wxy.micro.model.SystemUser">
-    insert into sys_user
+  <insert id="insertSelective" parameterType="com.wxy.micro.model.UserRole">
+    insert into user_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="username != null">
-        username,
+      <if test="roleId != null">
+        role_id,
       </if>
-      <if test="password != null">
-        password,
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="createtime != null">
         createtime,
-      </if>
-      <if test="datasource != null">
-        datasource,
-      </if>
-      <if test="lastLoginTime != null">
-        last_login_time,
-      </if>
-      <if test="loginCount != null">
-        login_count,
       </if>
       <if test="field1 != null">
         field1,
@@ -142,58 +128,40 @@
       <if test="id != null">
         #{id,jdbcType=CHAR},
       </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        #{roleId,jdbcType=CHAR},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
       </if>
       <if test="createtime != null">
         #{createtime,jdbcType=VARCHAR},
-      </if>
-      <if test="datasource != null">
-        #{datasource,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLoginTime != null">
-        #{lastLoginTime,jdbcType=VARCHAR},
-      </if>
-      <if test="loginCount != null">
-        #{loginCount,jdbcType=INTEGER},
       </if>
       <if test="field1 != null">
         #{field1,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wxy.micro.model.SystemUserExample" resultType="java.lang.Long">
-    select count(*) from sys_user
+  <select id="countByExample" parameterType="com.wxy.micro.model.UserRoleExample" resultType="java.lang.Long">
+    select count(*) from user_role
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update sys_user
+    update user_role
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=CHAR},
       </if>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=CHAR},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=CHAR},
       </if>
       <if test="record.createtime != null">
         createtime = #{record.createtime,jdbcType=VARCHAR},
-      </if>
-      <if test="record.datasource != null">
-        datasource = #{record.datasource,jdbcType=VARCHAR},
-      </if>
-      <if test="record.lastLoginTime != null">
-        last_login_time = #{record.lastLoginTime,jdbcType=VARCHAR},
-      </if>
-      <if test="record.loginCount != null">
-        login_count = #{record.loginCount,jdbcType=INTEGER},
       </if>
       <if test="record.field1 != null">
         field1 = #{record.field1,jdbcType=VARCHAR},
@@ -204,39 +172,27 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update sys_user
+    update user_role
     set id = #{record.id,jdbcType=CHAR},
-      username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
+      role_id = #{record.roleId,jdbcType=CHAR},
+      user_id = #{record.userId,jdbcType=CHAR},
       createtime = #{record.createtime,jdbcType=VARCHAR},
-      datasource = #{record.datasource,jdbcType=VARCHAR},
-      last_login_time = #{record.lastLoginTime,jdbcType=VARCHAR},
-      login_count = #{record.loginCount,jdbcType=INTEGER},
       field1 = #{record.field1,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wxy.micro.model.SystemUser">
-    update sys_user
+  <update id="updateByPrimaryKeySelective" parameterType="com.wxy.micro.model.UserRole">
+    update user_role
     <set>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=CHAR},
       </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=CHAR},
       </if>
       <if test="createtime != null">
         createtime = #{createtime,jdbcType=VARCHAR},
-      </if>
-      <if test="datasource != null">
-        datasource = #{datasource,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLoginTime != null">
-        last_login_time = #{lastLoginTime,jdbcType=VARCHAR},
-      </if>
-      <if test="loginCount != null">
-        login_count = #{loginCount,jdbcType=INTEGER},
       </if>
       <if test="field1 != null">
         field1 = #{field1,jdbcType=VARCHAR},
@@ -244,14 +200,11 @@
     </set>
     where id = #{id,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wxy.micro.model.SystemUser">
-    update sys_user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.wxy.micro.model.UserRole">
+    update user_role
+    set role_id = #{roleId,jdbcType=CHAR},
+      user_id = #{userId,jdbcType=CHAR},
       createtime = #{createtime,jdbcType=VARCHAR},
-      datasource = #{datasource,jdbcType=VARCHAR},
-      last_login_time = #{lastLoginTime,jdbcType=VARCHAR},
-      login_count = #{loginCount,jdbcType=INTEGER},
       field1 = #{field1,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>

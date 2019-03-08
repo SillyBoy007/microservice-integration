@@ -16,7 +16,7 @@
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/mcroservice-integration01" userId="root"
+                        connectionURL="jdbc:mysql://localhost:3306/microservice-integration01" userId="root"
                         password="123456">
         </jdbcConnection>
         <javaTypeResolver>
@@ -43,9 +43,9 @@
         </javaClientGenerator>
         <!-- 要生成哪些表 -->
         <table tableName="`sys_user`" domainObjectName="SystemUser"/>
-  <!--      <table tableName="`posttag`" domainObjectName="PostTag"/>
-        <table tableName="`tag`" domainObjectName="Tag"/>
-        <table tableName="`type`" domainObjectName="Type"/>
-        <table tableName="`typetag`" domainObjectName="typetag"/>-->
+        <table tableName="`role`" domainObjectName="Role"/>
+        <table tableName="`user_role`" domainObjectName="UserRole"/>
+        <table tableName="`permission`" domainObjectName="Permission"/>
+        <table tableName="`role_permission`" domainObjectName="RolePermission"/>
     </context>
 </generatorConfiguration>

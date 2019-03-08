@@ -1,8 +1,5 @@
 package com.wxy.micro.service.impl;
 
-import com.wxy.micro.mapper.SystemUserMapper;
-import com.wxy.micro.model.SystemUser;
-import com.wxy.micro.model.SystemUserExample;
 import com.wxy.micro.service.SystemUserService;
 import com.wxy.micro.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

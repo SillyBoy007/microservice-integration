@@ -1,6 +1,5 @@
 package com.wxy.micro.service;
 
-import com.wxy.micro.model.SystemUser;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,7 +1,6 @@
 package com.wxy.micro.config;
 
 import com.wxy.micro.handler.MyPasswordEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,7 +22,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/system/**").hasRole("SYSTEMADMIN");
 
         http.formLogin()
-                .loginPage("/login")
+                .loginPage("/login").permitAll()
+
                 .usernameParameter("username")
                 .passwordParameter("password");
         http.csrf().disable();
@@ -39,7 +39,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("wang").password(new MyPasswordEncoder().encode("123456")).roles("SYSTEMADMIN");
         auth.inMemoryAuthentication().withUser("zhangsan").password(new MyPasswordEncoder().encode("123456")).roles("ADMIN");
         auth.inMemoryAuthentication().withUser("lisi").password(new MyPasswordEncoder().encode("123456")).roles("USER");
-
+        //auth.userDetailsService()
 
     }
 

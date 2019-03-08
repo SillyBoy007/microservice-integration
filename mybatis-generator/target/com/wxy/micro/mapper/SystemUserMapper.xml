@@ -6,7 +6,10 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="createtime" jdbcType="VARCHAR" property="createtime" />
-    <result column="dataSource" jdbcType="VARCHAR" property="datasource" />
+    <result column="datasource" jdbcType="VARCHAR" property="datasource" />
+    <result column="last_login_time" jdbcType="VARCHAR" property="lastLoginTime" />
+    <result column="login_count" jdbcType="INTEGER" property="loginCount" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, createtime, dataSource
+    id, username, password, createtime, datasource, last_login_time, login_count, field1
   </sql>
   <select id="selectByExample" parameterType="com.wxy.micro.model.SystemUserExample" resultMap="BaseResultMap">
     select
@@ -101,9 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.wxy.micro.model.SystemUser">
     insert into sys_user (id, username, password, 
-      createtime, dataSource)
+      createtime, datasource, last_login_time, 
+      login_count, field1)
     values (#{id,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=VARCHAR}, #{datasource,jdbcType=VARCHAR})
+      #{createtime,jdbcType=VARCHAR}, #{datasource,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=VARCHAR}, 
+      #{loginCount,jdbcType=INTEGER}, #{field1,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wxy.micro.model.SystemUser">
     insert into sys_user
@@ -121,7 +126,16 @@
         createtime,
       </if>
       <if test="datasource != null">
-        dataSource,
+        datasource,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="loginCount != null">
+        login_count,
+      </if>
+      <if test="field1 != null">
+        field1,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -139,6 +153,15 @@
       </if>
       <if test="datasource != null">
         #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCount != null">
+        #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -164,7 +187,16 @@
         createtime = #{record.createtime,jdbcType=VARCHAR},
       </if>
       <if test="record.datasource != null">
-        dataSource = #{record.datasource,jdbcType=VARCHAR},
+        datasource = #{record.datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastLoginTime != null">
+        last_login_time = #{record.lastLoginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginCount != null">
+        login_count = #{record.loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.field1 != null">
+        field1 = #{record.field1,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -177,7 +209,10 @@
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=VARCHAR},
-      dataSource = #{record.datasource,jdbcType=VARCHAR}
+      datasource = #{record.datasource,jdbcType=VARCHAR},
+      last_login_time = #{record.lastLoginTime,jdbcType=VARCHAR},
+      login_count = #{record.loginCount,jdbcType=INTEGER},
+      field1 = #{record.field1,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -195,7 +230,16 @@
         createtime = #{createtime,jdbcType=VARCHAR},
       </if>
       <if test="datasource != null">
-        dataSource = #{datasource,jdbcType=VARCHAR},
+        datasource = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="loginCount != null">
+        login_count = #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="field1 != null">
+        field1 = #{field1,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=CHAR}
@@ -205,7 +249,10 @@
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=VARCHAR},
-      dataSource = #{datasource,jdbcType=VARCHAR}
+      datasource = #{datasource,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=VARCHAR},
+      login_count = #{loginCount,jdbcType=INTEGER},
+      field1 = #{field1,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>

@@ -43,9 +43,9 @@
         </javaClientGenerator>
         <!-- 要生成哪些表 -->
         <table tableName="`sys_user`" domainObjectName="SystemUser"/>
-  <!--      <table tableName="`posttag`" domainObjectName="PostTag"/>
-        <table tableName="`tag`" domainObjectName="Tag"/>
-        <table tableName="`type`" domainObjectName="Type"/>
-        <table tableName="`typetag`" domainObjectName="typetag"/>-->
+        <table tableName="`role`" domainObjectName="Role"/>
+        <table tableName="`user_role`" domainObjectName="UserRole"/>
+        <table tableName="`permission`" domainObjectName="Permission"/>
+        <table tableName="`role_permission`" domainObjectName="RolePermission"/>
     </context>
 </generatorConfiguration>

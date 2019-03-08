@@ -2,12 +2,9 @@ package com.wxy.micro.mapper;
 
 import com.wxy.micro.model.SystemUser;
 import com.wxy.micro.model.SystemUserExample;
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
-@Mapper
 public interface SystemUserMapper {
     long countByExample(SystemUserExample example);
 

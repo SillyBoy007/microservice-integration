@@ -1,6 +1,5 @@
 package com.wxy.micro.controller;
 
-import com.wxy.micro.model.SystemUser;
 import com.wxy.micro.service.SystemUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
